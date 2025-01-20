@@ -1,20 +1,15 @@
 "use client";
 import React, { SyntheticEvent, useRef, useState } from "react";
-import { Task } from "../types";
+import { useTasks } from "../hooks/useTasks";
 
-function TaskInput({
-  setTasks,
-  tasks,
-}: {
-  setTasks: (text: string) => void;
-  tasks: Task[];
-}) {
+function TaskInput() {
+  const { dispatch } = useTasks();
   const inputRef = useRef(null);
   const [inputVal, setInputVal] = useState("");
 
   const onSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-    setTasks(inputVal);
+    dispatch({ type: "add", payload: inputVal });
     setInputVal("");
   };
 
