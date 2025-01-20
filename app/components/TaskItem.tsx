@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import { Task } from "../types";
 
-function TaskItem() {
+function TaskItem({ task }: { task: Task }) {
+  console.log("task.text", task.text);
   return (
-    <div>TaskItem</div>
-  )
+    <div key={task.id}>
+      <span>
+        <p>{task.text}</p>
+      </span>
+    </div>
+  );
 }
 
-export default TaskItem
+export default TaskItem;

@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import TaskItem from "./TaskItem";
+import { Task } from "../types";
 
-function TaskList() {
+function TaskList({ tasks }: { tasks: Task[] }) {
+  console.log("tasks", tasks);
   return (
-    <div>TaskList</div>
-  )
+    <>
+      {tasks.map((task) => {
+        return <TaskItem key={task.id} task={task} />;
+      })}
+    </>
+  );
 }
 
-export default TaskList
+export default TaskList;

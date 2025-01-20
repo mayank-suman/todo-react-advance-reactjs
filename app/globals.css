@@ -26,7 +26,6 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-/* src/App.css */
 .App {
   max-width: 400px;
   margin: 20px auto;
@@ -38,6 +37,7 @@ body {
 input[type="text"] {
   padding: 10px;
   margin-right: 10px;
+  color: black;
 }
 
 button {
