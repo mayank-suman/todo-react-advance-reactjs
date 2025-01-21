@@ -3,13 +3,13 @@ import React, { SyntheticEvent, useRef, useState } from "react";
 import { useTasks } from "../hooks/useTasks";
 
 function TaskInput() {
-  const { dispatch } = useTasks();
+  const { addTask } = useTasks();
   const inputRef = useRef(null);
   const [inputVal, setInputVal] = useState("");
 
   const onSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-    dispatch({ type: "add", payload: inputVal });
+    addTask(inputVal);
     setInputVal("");
   };
 

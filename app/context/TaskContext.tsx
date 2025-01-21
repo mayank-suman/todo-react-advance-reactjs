@@ -20,7 +20,8 @@ export const reducer = (
 
 export const TaskContext = createContext<{
   tasks: Task[];
-  dispatch: (value: { type: string; payload: any }) => void;
+  addTask: (text: string) => void;
+  deleteTask: (id: number) => void;
 } | null>(null);
 
 function TaskProvider({ children }: PropsWithChildren) {
@@ -29,7 +30,7 @@ function TaskProvider({ children }: PropsWithChildren) {
   const deleteTask = (id: number) => dispatch({ type: "delete", payload: id });
 
   return (
-    <TaskContext.Provider value={{ tasks, dispatch }}>
+    <TaskContext.Provider value={{ tasks, addTask, deleteTask }}>
       {children}
     </TaskContext.Provider>
   );
