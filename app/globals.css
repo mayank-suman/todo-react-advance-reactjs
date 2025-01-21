@@ -52,3 +52,30 @@ button {
 button:hover {
   background-color: #45a049;
 }
+
+.main-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: auto;
+  gap: 1em;
+}
+
+.task-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: space-between;
+}
+
+.task-item input {
+  margin-right: 5px;
+}
+
+.task-item p {
+  margin-right: 5px;
+}
+
+.add-form {
+  display: grid;
+  grid-template-columns: auto auto;
+}

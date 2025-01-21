@@ -14,17 +14,15 @@ function TaskInput() {
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input
-          ref={inputRef}
-          type="text"
-          value={inputVal}
-          onChange={(e) => setInputVal(e.target.value)}
-        />
-        <button type="submit">Add</button>
-      </form>
-    </div>
+    <form onSubmit={onSubmit} className="add-form">
+      <input
+        ref={inputRef}
+        type="text"
+        value={inputVal}
+        onChange={(e) => setInputVal(e.target.value)}
+      />
+      <button type="submit">Add</button>
+    </form>
   );
 }
 
