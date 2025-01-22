@@ -1,7 +1,7 @@
 // src/types.ts
 
 export interface Task {
-  id: number;
+  id: string;
   text: string;
   completed: boolean;
 }
@@ -9,6 +9,6 @@ export interface Task {
 export interface AppContextType {
   tasks: Task[];
   addTask: (text: string) => void;
-  deleteTask: (id: number) => void;
-  toggleComplete: (id: number) => void;
+  deleteTask: (id: string) => void;
+  toggleComplete: (id: string) => void;
 }

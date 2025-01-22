@@ -2,29 +2,27 @@ import React, { SyntheticEvent } from "react";
 import { Task } from "../types";
 import { useTasks } from "../hooks/useTasks";
 
-function getDataIdFromParent(
-  event: React.SyntheticEvent<EventTarget, Event>
-): any {
+function getDataIdFromParent(event: React.SyntheticEvent<EventTarget, Event>) {
   if (
     !(
       event.target instanceof HTMLButtonElement ||
       event.target instanceof HTMLInputElement
     )
   ) {
-    return;
+    return "";
   }
-  return event.target.parentElement?.dataset["id"];
+  return event.target.parentElement?.dataset["id"] || "";
 }
 
 function TaskItem({ task }: { task: Task }) {
   const { deleteTask, toggleComplete } = useTasks();
 
   const onDeleteButtonClick = (event: SyntheticEvent<EventTarget>) => {
-    deleteTask(Number(getDataIdFromParent(event)));
+    deleteTask(getDataIdFromParent(event));
   };
 
   const onCheckboxChange = (event: SyntheticEvent<EventTarget>) => {
-    toggleComplete(Number(getDataIdFromParent(event)));
+    toggleComplete(getDataIdFromParent(event));
   };
 
   return (

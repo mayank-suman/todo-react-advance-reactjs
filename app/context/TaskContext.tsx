@@ -6,7 +6,7 @@ const reducer = (state: Task[], action: { type: string; payload: any }) => {
     case "add":
       return [
         ...state,
-        { id: Date.now(), text: action.payload, completed: false },
+        { id: Date.now().toString(), text: action.payload, completed: false },
       ];
 
     case "delete":
@@ -31,8 +31,8 @@ export const TaskContext = createContext<AppContextType | null>(null);
 function TaskProvider({ children }: PropsWithChildren) {
   const [tasks, dispatch] = useReducer(reducer, []);
   const addTask = (text: string) => dispatch({ type: "add", payload: text });
-  const deleteTask = (id: number) => dispatch({ type: "delete", payload: id });
-  const toggleComplete = (id: number) =>
+  const deleteTask = (id: string) => dispatch({ type: "delete", payload: id });
+  const toggleComplete = (id: string) =>
     dispatch({ type: "toggle_complete", payload: id });
 
   return (
