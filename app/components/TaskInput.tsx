@@ -4,13 +4,14 @@ import { useTasks } from "../hooks/useTasks";
 
 function TaskInput() {
   const { addTask } = useTasks();
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [inputVal, setInputVal] = useState("");
 
   const onSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
     addTask(inputVal);
     setInputVal("");
+    inputRef.current?.focus();
   };
 
   return (

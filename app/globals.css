@@ -75,6 +75,10 @@ button:hover {
   margin-right: 5px;
 }
 
+.task-item p.strikeThrough {
+  text-decoration: line-through;
+}
+
 .add-form {
   display: grid;
   grid-template-columns: auto auto;
