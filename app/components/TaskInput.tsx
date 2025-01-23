@@ -9,8 +9,12 @@ function TaskInput() {
 
   const onSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-    addTask(inputVal);
-    setInputVal("");
+
+    if (inputVal) {
+      addTask(inputVal);
+      setInputVal("");
+    }
+
     inputRef.current?.focus();
   };
 

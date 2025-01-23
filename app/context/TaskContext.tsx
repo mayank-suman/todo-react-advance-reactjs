@@ -1,4 +1,9 @@
-import { PropsWithChildren, createContext, useReducer } from "react";
+import {
+  PropsWithChildren,
+  createContext,
+  useCallback,
+  useReducer,
+} from "react";
 import { AppContextType, Task } from "../types";
 
 const reducer = (state: Task[], action: { type: string; payload: any }) => {
@@ -30,10 +35,21 @@ export const TaskContext = createContext<AppContextType | null>(null);
 
 function TaskProvider({ children }: PropsWithChildren) {
   const [tasks, dispatch] = useReducer(reducer, []);
-  const addTask = (text: string) => dispatch({ type: "add", payload: text });
-  const deleteTask = (id: string) => dispatch({ type: "delete", payload: id });
-  const toggleComplete = (id: string) =>
-    dispatch({ type: "toggle_complete", payload: id });
+
+  const addTask = useCallback(
+    (text: string) => dispatch({ type: "add", payload: text }),
+    []
+  );
+
+  const deleteTask = useCallback(
+    (id: string) => dispatch({ type: "delete", payload: id }),
+    []
+  );
+
+  const toggleComplete = useCallback(
+    (id: string) => dispatch({ type: "toggle_complete", payload: id }),
+    []
+  );
 
   return (
     <TaskContext.Provider
